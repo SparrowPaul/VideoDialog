@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -37,7 +38,7 @@ public class VideoPlayerDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity());
+        Dialog dialog = new Dialog(getActivity(),android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -49,7 +50,7 @@ public class VideoPlayerDialogFragment extends DialogFragment {
 
         View parent= getActivity().getLayoutInflater().inflate(R.layout.fragment_video_player_dialog, null);
         simpleExoPlayerView = parent.findViewById(R.id.exo_player_view);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         dialog.setContentView(parent, layoutParams);
         return dialog;
     }
